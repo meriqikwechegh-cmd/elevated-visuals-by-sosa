@@ -1,0 +1,255 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: var(--font-sans, system-ui, -apple-system, sans-serif);
+  --font-display: var(--font-display, Georgia, serif);
+  --font-mono: var(--font-mono, monospace);
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #0c0a09;
+  color: #f5f5f4;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Typography & Utility Classes */
+.container-custom {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .container-custom {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+.section {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+}
+
+.section-inner {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .section-inner {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+/* Typography styles matching original editorial aesthetic */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.text-display-xl {
+  font-size: 2.75rem;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 768px) {
+  .text-display-xl {
+    font-size: 4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .text-display-xl {
+    font-size: 5rem;
+  }
+}
+
+.text-display-lg {
+  font-size: 2.25rem;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 768px) {
+  .text-display-lg {
+    font-size: 3.25rem;
+  }
+}
+
+.text-display-md {
+  font-size: 1.875rem;
+  line-height: 1.16;
+  letter-spacing: -0.015em;
+}
+
+@media (min-width: 768px) {
+  .text-display-md {
+    font-size: 2.75rem;
+  }
+}
+
+.text-display-sm {
+  font-size: 1.5rem;
+  line-height: 1.25;
+}
+
+@media (min-width: 768px) {
+  .text-display-sm {
+    font-size: 1.875rem;
+  }
+}
+
+.text-heading-md {
+  font-size: 1.25rem;
+  line-height: 1.4;
+}
+
+@media (min-width: 768px) {
+  .text-heading-md {
+    font-size: 1.5rem;
+  }
+}
+
+.text-heading-sm {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.text-body-lg {
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+.text-body {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.text-body-sm {
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.text-caption {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Custom Buttons */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  border-radius: 0.875rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  background-color: #f5f5f4;
+  color: #0c0a09;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25);
+}
+
+.btn-primary:hover {
+  background-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.35);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  border-radius: 0.875rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  background-color: rgba(28, 25, 23, 0.6);
+  backdrop-filter: blur(8px);
+  color: #f5f5f4;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-secondary:hover {
+  background-color: rgba(44, 40, 37, 0.8);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Custom Form Fields */
+.label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #d6d3d1;
+  margin-bottom: 0.5rem;
+}
+
+.input-field {
+  width: 100%;
+  padding: 0.875rem 1.25rem;
+  border-radius: 0.875rem;
+  background-color: rgba(28, 25, 23, 0.7);
+  border: 1px solid #292524;
+  color: #f5f5f4;
+  font-size: 0.95rem;
+  transition: all 0.25s ease;
+}
+
+.input-field::placeholder {
+  color: #78716c;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #ad8c5a;
+  box-shadow: 0 0 0 3px rgba(173, 140, 90, 0.2);
+  background-color: rgba(28, 25, 23, 0.9);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0c0a09;
+}
+::-webkit-scrollbar-thumb {
+  background: #292524;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #44403c;
+}
