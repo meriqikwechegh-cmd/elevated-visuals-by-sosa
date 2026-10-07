@@ -72,13 +72,8 @@ export default function Newsletter() {
           ) : (
             <form
               onSubmit={handleSubmit}
-              action={formspreeKey ? `https://formspree.io/f/${formspreeKey}` : undefined}
-              method="POST"
-              name="newsletter"
-              data-netlify="true"
               className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
             >
-              <input type="hidden" name="form-name" value="newsletter" />
               <div className="relative flex-1">
                 <Mail className="w-5 h-5 text-stone-500 absolute left-4 top-1/2 -translate-y-1/2" />
                 <input

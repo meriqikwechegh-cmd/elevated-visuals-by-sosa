@@ -198,15 +198,10 @@ export default function BookingForm({
             ) : (
               <form
                 onSubmit={handleSubmit}
-                action={formspreeKey ? `https://formspree.io/f/${formspreeKey}` : undefined}
-                method="POST"
-                name="booking-enquiry"
-                data-netlify="true"
                 className="space-y-6"
               >
                 {/* Hidden input for occasion */}
                 <input type="hidden" name="occasion" value={occasion} />
-                <input type="hidden" name="form-name" value="booking-enquiry" />
 
                 {errorMessage && (
                   <div className="p-3.5 rounded-xl bg-red-950/80 border border-red-800 text-red-200 text-xs">
