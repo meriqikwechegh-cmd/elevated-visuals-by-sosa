@@ -23,6 +23,31 @@ export default function WorkGrid() {
     setWorkItems(shuffledItems);
   }, []);
 
+  useEffect(() => {
+    const loadedImageIds = Array.from(
+      document.querySelectorAll<HTMLImageElement>('[data-work-image-id]'),
+    )
+      .filter((image) => image.complete && image.naturalWidth > 0)
+      .map((image) => image.dataset.workImageId)
+      .filter((id): id is string => Boolean(id));
+
+    if (loadedImageIds.length === 0) return;
+
+    setLoadedMedia((previous) => {
+      const next = { ...previous };
+      let changed = false;
+
+      for (const id of loadedImageIds) {
+        if (!next[id]) {
+          next[id] = true;
+          changed = true;
+        }
+      }
+
+      return changed ? next : previous;
+    });
+  }, [workItems]);
+
   const filteredItems = activeTab === 'all'
     ? workItems
     : workItems.filter((item) => item.category === activeTab);
@@ -109,6 +134,7 @@ export default function WorkGrid() {
                     <img
                       src={item.src}
                       alt={item.title}
+                      data-work-image-id={item.id}
                       onLoad={() => handleMediaLoaded(item.id)}
                       className={`w-full h-full object-cover group-hover:scale-105 transition-all duration-700 ease-out-expo ${
                         isLoaded ? 'opacity-100' : 'opacity-0'

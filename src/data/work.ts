@@ -68,6 +68,16 @@ export const WORK_ITEMS: WorkItem[] = [
     poster: 'https://customer-assets.emergentagent.com/job_sosa-portfolio/artifacts/p8y7x4rj_Everything%E2%80%99s%20Hallelujah%F0%9F%96%A4%E2%9D%A4%EF%B8%8F%23fyp%20%23foryou.jpg',
   },
   {
+    id: 'featured-reel-celebration',
+    title: 'Featured Reel Highlight',
+    category: 'celebration',
+    categoryLabel: 'Celebration',
+    location: 'Canberra, ACT',
+    type: 'video',
+    src: 'https://customer-assets.emergentagent.com/job_sosa-portfolio/artifacts/kf5jllay_A%20beautiful%2040th%20birthday%20celebration%20%F0%9F%A4%8ESoft%20life%2C%20elegance%2C%20and%20a%20woman%20stepping%20into%20a%20new%20cha.mp4',
+    poster: 'https://customer-assets.emergentagent.com/job_sosa-portfolio/artifacts/p8y7x4rj_Everything%E2%80%99s%20Hallelujah%F0%9F%96%A4%E2%9D%A4%EF%B8%8F%23fyp%20%23foryou.jpg',
+  },
+  {
     id: 'behind-the-lens',
     title: 'Behind The Lens — Sosa',
     category: 'brand',
