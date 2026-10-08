@@ -3,7 +3,7 @@ export interface WorkItem {
   title: string;
   category: 'wedding' | 'celebration' | 'brand';
   categoryLabel: string;
-  location: string;
+  location?: string;
   type: 'video' | 'image';
   src: string;
   poster?: string;
@@ -32,14 +32,20 @@ export const WORK_ITEMS: WorkItem[] = [
     poster: 'https://customer-assets.emergentagent.com/job_sosa-portfolio/artifacts/p8y7x4rj_Everything%E2%80%99s%20Hallelujah%F0%9F%96%A4%E2%9D%A4%EF%B8%8F%23fyp%20%23foryou.jpg',
   },
   {
-    id: 'surprise-bridal-shower',
-    title: 'Surprise Bridal Shower',
-    category: 'wedding',
-    categoryLabel: 'Wedding',
-    location: 'Canberra, ACT',
+    id: '70th-birthday',
+    title: '70th Birthday Celebration',
+    category: 'celebration',
+    categoryLabel: 'Celebration',
     type: 'video',
-    src: 'https://customer-assets.emergentagent.com/job_sosa-portfolio/artifacts/q01f3sig_MR%20%26%20MRS%20OZOH%F0%9F%A4%8DA%20beautiful%20union%20of%20two%20hearts%2C%20two%20families%2C%20honouring%20culture%2C%20celebrating%20lov.mp4',
-    poster: 'https://customer-assets.emergentagent.com/job_sosa-portfolio/artifacts/p8y7x4rj_Everything%E2%80%99s%20Hallelujah%F0%9F%96%A4%E2%9D%A4%EF%B8%8F%23fyp%20%23foryou.jpg',
+    src: '/videos/70th-birthday.mp4',
+  },
+  {
+    id: 'unique-restaurant',
+    title: 'Exquisite Brand Content',
+    category: 'brand',
+    categoryLabel: 'Brand',
+    type: 'video',
+    src: '/videos/unique-restaurant.mp4',
   },
   {
     id: 'soft-life-40th',
@@ -62,16 +68,6 @@ export const WORK_ITEMS: WorkItem[] = [
     poster: 'https://customer-assets.emergentagent.com/job_sosa-portfolio/artifacts/p8y7x4rj_Everything%E2%80%99s%20Hallelujah%F0%9F%96%A4%E2%9D%A4%EF%B8%8F%23fyp%20%23foryou.jpg',
   },
   {
-    id: 'forever-grateful',
-    title: 'Forever Grateful',
-    category: 'celebration',
-    categoryLabel: 'Celebration',
-    location: 'Canberra, ACT',
-    type: 'video',
-    src: 'https://customer-assets.emergentagent.com/job_sosa-portfolio/artifacts/kf5jllay_A%20beautiful%2040th%20birthday%20celebration%20%F0%9F%A4%8ESoft%20life%2C%20elegance%2C%20and%20a%20woman%20stepping%20into%20a%20new%20cha.mp4',
-    poster: 'https://customer-assets.emergentagent.com/job_sosa-portfolio/artifacts/p8y7x4rj_Everything%E2%80%99s%20Hallelujah%F0%9F%96%A4%E2%9D%A4%EF%B8%8F%23fyp%20%23foryou.jpg',
-  },
-  {
     id: 'behind-the-lens',
     title: 'Behind The Lens — Sosa',
     category: 'brand',
@@ -82,7 +78,7 @@ export const WORK_ITEMS: WorkItem[] = [
   },
   {
     id: 'featured-reel-celebration',
-    title: 'Featured Reel — Celebration Highlight',
+    title: 'Featured Reel Highlight',
     category: 'celebration',
     categoryLabel: 'Celebration',
     location: 'Canberra, ACT',

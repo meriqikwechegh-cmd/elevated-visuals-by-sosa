@@ -58,6 +58,7 @@ export default function VideoModal({ item, onClose }: VideoModalProps) {
         <div className="relative aspect-[9/16] md:aspect-[16/9] max-h-[70vh] bg-black flex items-center justify-center overflow-hidden">
           {item.type === 'video' ? (
             <video
+              key={item.id}
               src={item.src}
               controls
               autoPlay
@@ -75,10 +76,12 @@ export default function VideoModal({ item, onClose }: VideoModalProps) {
 
         {/* Footer */}
         <div className="p-6 bg-stone-950 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-t border-stone-800">
-          <p className="text-stone-400 text-sm flex items-center gap-2">
-            <MapPin className="w-4 h-4 text-brand-400" />
-            <span>{item.location}</span>
-          </p>
+          {item.location && (
+            <p className="text-stone-400 text-sm flex items-center gap-2">
+              <MapPin className="w-4 h-4 text-brand-400" />
+              <span>{item.location}</span>
+            </p>
+          )}
           <a
             href="#book"
             onClick={onClose}

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Play, MapPin, ArrowRight } from 'lucide-react';
 import { WORK_ITEMS, WorkItem } from '@/data/work';
 import VideoModal from './VideoModal';
@@ -10,10 +10,22 @@ export default function WorkGrid() {
   const [activeTab, setActiveTab] = useState<'all' | 'wedding' | 'celebration' | 'brand'>('all');
   const [selectedItem, setSelectedItem] = useState<WorkItem | null>(null);
   const [loadedMedia, setLoadedMedia] = useState<Record<string, boolean>>({});
+  const [workItems, setWorkItems] = useState(WORK_ITEMS);
+
+  useEffect(() => {
+    const shuffledItems = [...WORK_ITEMS];
+
+    for (let index = shuffledItems.length - 1; index > 0; index -= 1) {
+      const randomIndex = Math.floor(Math.random() * (index + 1));
+      [shuffledItems[index], shuffledItems[randomIndex]] = [shuffledItems[randomIndex], shuffledItems[index]];
+    }
+
+    setWorkItems(shuffledItems);
+  }, []);
 
   const filteredItems = activeTab === 'all'
-    ? WORK_ITEMS
-    : WORK_ITEMS.filter((item) => item.category === activeTab);
+    ? workItems
+    : workItems.filter((item) => item.category === activeTab);
 
   const handleMediaLoaded = (id: string) => {
     setLoadedMedia((prev) => ({ ...prev, [id]: true }));
@@ -117,10 +129,12 @@ export default function WorkGrid() {
                     </h3>
 
                     <div className="flex items-center justify-between text-xs text-stone-400 border-t border-stone-800/80 pt-3">
-                      <span className="flex items-center gap-1.5">
-                        <MapPin className="w-3.5 h-3.5 text-stone-500" />
-                        {item.location}
-                      </span>
+                      {item.location && (
+                        <span className="flex items-center gap-1.5">
+                          <MapPin className="w-3.5 h-3.5 text-stone-500" />
+                          {item.location}
+                        </span>
+                      )}
                       <span className="inline-flex items-center gap-1 text-brand-400 font-medium group-hover:translate-x-1 transition-transform">
                         Watch <Play className="w-3.5 h-3.5 fill-current" />
                       </span>
