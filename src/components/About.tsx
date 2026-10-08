@@ -1,11 +1,19 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ArrowRight, Camera } from 'lucide-react';
 import Skeleton from './Skeleton';
 
 export default function About() {
   const [imageLoaded, setImageLoaded] = useState(false);
+  const imageRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    const image = imageRef.current;
+    if (image?.complete && image.naturalWidth > 0) {
+      setImageLoaded(true);
+    }
+  }, []);
 
   return (
     <section id="about" className="section bg-stone-900 border-t border-stone-800" aria-labelledby="about-heading">
@@ -20,6 +28,7 @@ export default function About() {
                 </div>
               )}
               <img
+                ref={imageRef}
                 src="https://customer-assets.emergentagent.com/job_sosa-portfolio/artifacts/p8y7x4rj_Everything%E2%80%99s%20Hallelujah%F0%9F%96%A4%E2%9D%A4%EF%B8%8F%23fyp%20%23foryou.jpg"
                 alt="Sosa at work behind the camera"
                 onLoad={() => setImageLoaded(true)}
@@ -37,9 +46,6 @@ export default function About() {
                   <Camera className="w-6 h-6" />
                 </div>
                 <div>
-                  <p className="text-caption font-semibold text-brand-400 tracking-wider">
-                    Canberra · AU
-                  </p>
                   <p className="text-sm font-medium text-stone-100 mt-0.5">
                     Behind the lens
                   </p>
