@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Play, MapPin, ArrowRight } from 'lucide-react';
+import { Play, ArrowRight } from 'lucide-react';
 import { WORK_ITEMS, WorkItem } from '@/data/work';
 import VideoModal from './VideoModal';
 import Skeleton from './Skeleton';
@@ -24,20 +24,24 @@ export default function WorkGrid() {
   }, []);
 
   useEffect(() => {
-    const loadedImageIds = Array.from(
-      document.querySelectorAll<HTMLImageElement>('[data-work-image-id]'),
+    const loadedMediaIds = Array.from(
+      document.querySelectorAll<HTMLImageElement | HTMLVideoElement>('[data-work-media-id]'),
     )
-      .filter((image) => image.complete && image.naturalWidth > 0)
-      .map((image) => image.dataset.workImageId)
+      .filter((media) => (
+        media instanceof HTMLImageElement
+          ? media.complete && media.naturalWidth > 0
+          : media.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA && media.videoWidth > 0
+      ))
+      .map((media) => media.dataset.workMediaId)
       .filter((id): id is string => Boolean(id));
 
-    if (loadedImageIds.length === 0) return;
+    if (loadedMediaIds.length === 0) return;
 
     setLoadedMedia((previous) => {
       const next = { ...previous };
       let changed = false;
 
-      for (const id of loadedImageIds) {
+      for (const id of loadedMediaIds) {
         if (!next[id]) {
           next[id] = true;
           changed = true;
@@ -120,6 +124,7 @@ export default function WorkGrid() {
                   {item.type === 'video' ? (
                     <video
                       src={item.src}
+                      data-work-media-id={item.id}
                       autoPlay
                       loop
                       muted
@@ -134,7 +139,7 @@ export default function WorkGrid() {
                     <img
                       src={item.src}
                       alt={item.title}
-                      data-work-image-id={item.id}
+                      data-work-media-id={item.id}
                       onLoad={() => handleMediaLoaded(item.id)}
                       className={`w-full h-full object-cover group-hover:scale-105 transition-all duration-700 ease-out-expo ${
                         isLoaded ? 'opacity-100' : 'opacity-0'
@@ -155,12 +160,6 @@ export default function WorkGrid() {
                     </h3>
 
                     <div className="flex items-center justify-between text-xs text-stone-400 border-t border-stone-800/80 pt-3">
-                      {item.location && (
-                        <span className="flex items-center gap-1.5">
-                          <MapPin className="w-3.5 h-3.5 text-stone-500" />
-                          {item.location}
-                        </span>
-                      )}
                       <span className="inline-flex items-center gap-1 text-brand-400 font-medium group-hover:translate-x-1 transition-transform">
                         Watch <Play className="w-3.5 h-3.5 fill-current" />
                       </span>

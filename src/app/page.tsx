@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import Services from '@/components/Services';
+import Pricing from '@/components/Pricing';
 import WorkGrid from '@/components/WorkGrid';
 import About from '@/components/About';
 import BookingForm from '@/components/BookingForm';
@@ -19,6 +20,7 @@ export default function Home() {
       <main id="main-content" role="main" className="flex-grow">
         <Hero />
         <Services onSelectOccasion={(occ) => setSelectedOccasion(occ)} />
+        <Pricing />
         <WorkGrid />
         <About />
         <BookingForm

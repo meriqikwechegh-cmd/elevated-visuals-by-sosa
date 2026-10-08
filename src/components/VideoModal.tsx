@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import { X, MapPin } from 'lucide-react';
+import { X } from 'lucide-react';
 import { WorkItem } from '@/data/work';
 
 interface VideoModalProps {
@@ -76,12 +76,6 @@ export default function VideoModal({ item, onClose }: VideoModalProps) {
 
         {/* Footer */}
         <div className="p-6 bg-stone-950 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-t border-stone-800">
-          {item.location && (
-            <p className="text-stone-400 text-sm flex items-center gap-2">
-              <MapPin className="w-4 h-4 text-brand-400" />
-              <span>{item.location}</span>
-            </p>
-          )}
           <a
             href="#book"
             onClick={onClose}
