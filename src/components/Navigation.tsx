@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { Menu, X, ArrowRight, Sparkles } from 'lucide-react';
 
 export default function Navigation() {
@@ -35,15 +36,17 @@ export default function Navigation() {
         {/* Brand Logo */}
         <a
           href="#top"
-          className="flex items-center gap-2 text-stone-50 font-display font-medium text-xl md:text-2xl group transition-transform duration-300 hover:scale-[1.01]"
+          className="flex items-center group transition-transform duration-300 hover:scale-[1.02]"
           aria-label="Elevated Visuals by Sosa - Home"
         >
-          <span className="w-8 h-8 rounded-full bg-brand-500/20 border border-brand-500/40 text-brand-400 flex items-center justify-center text-xs font-sans font-bold group-hover:bg-brand-500 group-hover:text-stone-950 transition-colors">
-            EV
-          </span>
-          <span className="tracking-tight">
-            Elevated Visuals <span className="italic text-brand-400 font-normal">by Sosa</span>
-          </span>
+          <Image
+            src="/logo-dark.jpg"
+            alt="Elevated Visuals by Sosa"
+            width={160}
+            height={64}
+            className="h-12 w-auto object-contain"
+            priority
+          />
         </a>
 
         {/* Desktop Nav Links */}

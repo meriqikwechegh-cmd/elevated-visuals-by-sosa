@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { Instagram, Mail, MapPin } from 'lucide-react';
 
 export default function Footer() {
@@ -12,15 +13,16 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <a
               href="#top"
-              className="flex items-center gap-2 text-stone-100 font-display font-medium text-xl mb-6"
+              className="inline-block p-2 bg-stone-100 rounded-xl hover:bg-white transition-all duration-300 mb-6 group shadow-md"
               aria-label="Elevated Visuals by Sosa - Home"
             >
-              <span className="w-8 h-8 rounded-full bg-brand-500/20 border border-brand-500/40 text-brand-400 flex items-center justify-center text-xs font-sans font-bold">
-                EV
-              </span>
-              <span>
-                Elevated Visuals <span className="italic text-brand-400 font-normal">by Sosa</span>
-              </span>
+              <Image
+                src="/logo-light.jpg"
+                alt="Elevated Visuals by Sosa"
+                width={150}
+                height={60}
+                className="h-10 w-auto object-contain"
+              />
             </a>
             <p className="text-sm text-stone-400 leading-relaxed mb-6 max-w-xs">
               Cinematic, candid content for weddings, celebrations and the stories that matter most.
